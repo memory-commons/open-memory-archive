@@ -18,6 +18,7 @@
   "scripts": {
     "build:example": "node src/cli.js build examples/minimal-public/archive.json --out dist/minimal-public",
     "build:redacted": "node src/cli.js build examples/redacted-family/archive.json --privacy-profile public-demo --out dist/redacted-family",
+    "build:community": "node src/cli.js build-folder examples/community-memory --privacy-profile public-demo --out dist/community-memory",
     "validate:example": "node src/cli.js validate examples/minimal-public/archive.json",
     "test": "node --test"
   },

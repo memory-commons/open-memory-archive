@@ -1,0 +1,3 @@
+id,name,region,country,privacyScope,consentStatus,livingPersonStatus,containsPersonalData,containsSpecialCategoryData
+location-harbour,Harbour Street,Example Region,Finland,public,not_required,not_applicable,false,false
+location-school,Old School Hall,Example Region,Finland,public,not_required,not_applicable,false,false

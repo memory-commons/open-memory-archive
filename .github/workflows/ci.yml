@@ -24,8 +24,17 @@ jobs:
       - name: Build redacted demo
         run: npm run build:redacted
 
+      - name: Build community demo
+        run: npm run build:community
+
       - name: Verify checksums
         run: node src/cli.js verify-checksums dist/redacted-family
 
+      - name: Verify community checksums
+        run: node src/cli.js verify-checksums dist/community-memory
+
       - name: Inspect privacy
         run: node src/cli.js inspect-privacy dist/redacted-family
+
+      - name: Inspect community privacy
+        run: node src/cli.js inspect-privacy dist/community-memory

@@ -117,7 +117,7 @@ async function zipDirectory(sourceDir, zipPath) {
 
 export async function buildArchive(options) {
   const inputPath = resolve(options.inputPath)
-  const inputDir = dirname(inputPath)
+  const inputDir = resolve(options.inputBaseDir ?? dirname(inputPath))
   const rawInput = JSON.parse(await readFile(inputPath, 'utf-8'))
   const validation = validateArchiveInput(rawInput)
   if (!validation.ok) {
@@ -164,4 +164,3 @@ export async function buildArchive(options) {
     manifest,
   }
 }
-

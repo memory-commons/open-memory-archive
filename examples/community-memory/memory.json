@@ -1,0 +1,43 @@
+{
+  "id": "community-memory-demo",
+  "title": "Harbour Street Community Memories",
+  "author": "Example Local History Group",
+  "locale": "en",
+  "privacyScope": "public",
+  "consentStatus": "not_required",
+  "livingPersonStatus": "not_applicable",
+  "containsPersonalData": true,
+  "containsSpecialCategoryData": false,
+  "peopleCsv": "data/people.csv",
+  "eventsCsv": "data/events.csv",
+  "locationsCsv": "data/locations.csv",
+  "mediaCsv": "data/media.csv",
+  "chapters": [
+    {
+      "id": "harbour",
+      "title": "Harbour Days",
+      "file": "chapters/harbour.md",
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": false
+    },
+    {
+      "id": "school",
+      "title": "The Old School",
+      "file": "chapters/school.md",
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": false
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-anna-harbour",
+      "source": "person-anna",
+      "target": "event-harbour-market",
+      "type": "remembered"
+    }
+  ]
+}

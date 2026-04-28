@@ -1,0 +1,3 @@
+id,displayName,description,privacyScope,consentStatus,livingPersonStatus,containsPersonalData,containsSpecialCategoryData
+person-anna,Anna K.,Synthetic living participant shown as initials in public-demo exports,family,unknown,living,true,false
+person-matti,Matti Example,Synthetic deceased narrator for public demo,public,not_required,deceased,true,false

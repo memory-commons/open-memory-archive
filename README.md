@@ -43,6 +43,41 @@ What to check:
 - `verify-checksums` reports that generated files match the checksum manifest
 - `inspect-privacy` prints the privacy summary and redaction list
 
+## Use Without OmaMemoirs
+
+Open Memory Archive is not limited to exports from one platform. The `community-memory` example starts from ordinary files:
+
+```text
+examples/community-memory/
+  memory.json
+  chapters/
+    harbour.md
+    school.md
+  data/
+    people.csv
+    events.csv
+    locations.csv
+    media.csv
+  media/
+    harbour-note.txt
+```
+
+Build it directly:
+
+```bash
+npm run build:community
+node src/cli.js verify-checksums dist/community-memory
+node src/cli.js inspect-privacy dist/community-memory
+```
+
+Open:
+
+```text
+dist/community-memory/index.html
+```
+
+This path demonstrates that a local history group, family, or researcher can create an offline archive from Markdown, CSV, and local media files without using OmaMemoirs.
+
 Validate an example:
 
 ```bash

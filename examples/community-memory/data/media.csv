@@ -1,0 +1,3 @@
+id,title,file,mediaType,privacyScope,consentStatus,livingPersonStatus,containsPersonalData,containsSpecialCategoryData
+media-note,Harbour note,media/harbour-note.txt,text/plain,public,not_required,not_applicable,false,false
+media-private,Private participant note,media/private-note.txt,text/plain,family,unknown,living,true,false

@@ -77,6 +77,31 @@ This is the minimum useful commons contribution:
 - checksums for integrity inspection
 - a privacy inspection command
 
-## 5. Current Limits
+## 5. Use Without A Platform
+
+The `community-memory` example starts from ordinary files instead of a platform export:
+
+```bash
+npm run build:community
+node src/cli.js verify-checksums dist/community-memory
+node src/cli.js inspect-privacy dist/community-memory
+```
+
+Open:
+
+```text
+dist/community-memory/index.html
+```
+
+This demonstrates a second path:
+
+```text
+Markdown chapters + CSV tables + local media
+  -> Open Memory Archive input
+  -> privacy/redaction policy
+  -> static offline archive
+```
+
+## 6. Current Limits
 
 This is not yet a complete archive ecosystem. Missing pieces include better viewer UX, zip-output tests, richer graph rendering, and import adapters from existing systems.
