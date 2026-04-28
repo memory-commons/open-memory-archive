@@ -1,0 +1,37 @@
+{
+  "name": "open-memory-archive",
+  "version": "0.1.0",
+  "description": "Offline-first archive format, builder, validator, and viewer for personal and community memory projects.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "open-memory-archive": "./src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./schema": "./src/schema.js",
+    "./builder": "./src/builder.js",
+    "./privacy": "./src/privacy.js"
+  },
+  "scripts": {
+    "build:example": "node src/cli.js build examples/minimal-public/archive.json --out dist/minimal-public",
+    "build:redacted": "node src/cli.js build examples/redacted-family/archive.json --privacy-profile public-demo --out dist/redacted-family",
+    "validate:example": "node src/cli.js validate examples/minimal-public/archive.json",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "src",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "PRIVACY.md",
+    "DATA_PROTECTION.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md"
+  ]
+}

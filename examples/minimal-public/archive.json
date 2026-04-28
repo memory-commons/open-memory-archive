@@ -1,0 +1,99 @@
+{
+  "format": "open-memory-archive-input-v1",
+  "publication": {
+    "id": "minimal-public",
+    "title": "A Small Public Memory Archive",
+    "author": "Open Memory Archive contributors",
+    "locale": "en",
+    "privacy": {
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": false,
+      "containsSpecialCategoryData": false
+    }
+  },
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "The First Visit",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      },
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Arrival",
+          "text": "In 1954, a small group arrived at the old harbour and began documenting everyday life in the neighbourhood.",
+          "privacy": {
+            "privacyScope": "public",
+            "consentStatus": "not_required",
+            "containsPersonalData": false
+          }
+        }
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "person-1",
+      "displayName": "Aino Example",
+      "description": "A fictional deceased narrator used for public format testing.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "fictional",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event-1",
+      "title": "Neighbourhood documentation begins",
+      "date": "1954",
+      "description": "A public sample event.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "locations": [
+    {
+      "id": "location-1",
+      "name": "Old Harbour",
+      "country": "Finland",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "media-1",
+      "title": "Public sample note",
+      "sourcePath": "media/public-note.txt",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-1",
+      "source": "person-1",
+      "target": "event-1",
+      "type": "remembered"
+    }
+  ]
+}
+

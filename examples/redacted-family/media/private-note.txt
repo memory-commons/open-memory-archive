@@ -1,0 +1,2 @@
+This synthetic private fixture should not be copied into public-demo output.
+

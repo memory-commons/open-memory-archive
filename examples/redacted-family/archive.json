@@ -1,0 +1,151 @@
+{
+  "format": "open-memory-archive-input-v1",
+  "publication": {
+    "id": "redacted-family",
+    "title": "Redacted Family Archive Demo",
+    "author": "Open Memory Archive contributors",
+    "locale": "en",
+    "privacy": {
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": true,
+      "containsSpecialCategoryData": false
+    }
+  },
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "Family Gathering",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": true
+      },
+      "sections": [
+        {
+          "id": "section-public",
+          "title": "Public context",
+          "text": "This synthetic example shows how a public archive can include family-history context while redacting living-person-sensitive fields.",
+          "privacy": {
+            "privacyScope": "public",
+            "consentStatus": "not_required",
+            "containsPersonalData": false
+          }
+        },
+        {
+          "id": "section-private",
+          "title": "Private detail",
+          "text": "This private note should not appear in a public demo export.",
+          "privateNote": "Synthetic private detail",
+          "privacy": {
+            "privacyScope": "family",
+            "consentStatus": "unknown",
+            "containsPersonalData": true
+          }
+        }
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "person-living",
+      "displayName": "Liisa Living Example",
+      "birthDate": "1988-04-12",
+      "birthPlace": "Example Street 4, Helsinki",
+      "email": "liisa@example.invalid",
+      "biography": "Synthetic living-person data used to test redaction.",
+      "privacy": {
+        "privacyScope": "family",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false
+      }
+    },
+    {
+      "id": "person-deceased",
+      "displayName": "Matti Example",
+      "description": "Synthetic deceased person in the public portion of the fixture.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "deceased",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event-public",
+      "title": "A remembered summer meal",
+      "date": "1977",
+      "description": "A synthetic event safe for public demo export.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    },
+    {
+      "id": "event-withdrawn",
+      "title": "Withdrawn private event",
+      "date": "2024-01-20",
+      "description": "This should be redacted because consent is withdrawn.",
+      "privacy": {
+        "privacyScope": "private",
+        "consentStatus": "withdrawn",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true
+      }
+    }
+  ],
+  "locations": [
+    {
+      "id": "location-public",
+      "name": "Example Region",
+      "country": "Finland",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "media-public",
+      "title": "Public sample note",
+      "sourcePath": "media/public-note.txt",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    },
+    {
+      "id": "media-private",
+      "title": "Private family recording",
+      "sourcePath": "media/private-note.txt",
+      "signedUrl": "https://example.invalid/private?signature=synthetic",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "family",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-1",
+      "source": "person-deceased",
+      "target": "event-public",
+      "type": "remembered"
+    }
+  ]
+}
+

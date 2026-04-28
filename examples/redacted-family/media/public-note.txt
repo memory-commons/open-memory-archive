@@ -1,0 +1,2 @@
+This is a synthetic public fixture file for the redaction demo.
+
