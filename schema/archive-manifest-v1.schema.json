@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://memory-commons.org/schemas/open-memory-archive/archive-manifest-v1.schema.json",
+  "title": "Open Memory Archive Manifest v1",
+  "type": "object",
+  "required": ["format", "formatVersion", "builderVersion", "generatedAt", "publication", "privacy", "files"],
+  "additionalProperties": true,
+  "properties": {
+    "format": {
+      "const": "open-memory-archive-v1"
+    },
+    "formatVersion": {
+      "const": 1
+    },
+    "builderVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "publication": {
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": ["string", "null"]
+        },
+        "title": {
+          "type": ["string", "null"]
+        },
+        "locale": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "profile",
+        "generatedAt",
+        "generatedByTool",
+        "redactionPolicy",
+        "containsPersonalData",
+        "containsLivingPersonData",
+        "containsSpecialCategoryData",
+        "redactionCount",
+        "externalNetworkRequired",
+        "telemetryEnabled"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "profile": {
+          "enum": ["public-demo", "family-export", "research-export", "redacted-public-export"]
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "generatedByTool": {
+          "type": "string"
+        },
+        "redactionPolicy": {
+          "type": "string"
+        },
+        "containsPersonalData": {
+          "type": "boolean"
+        },
+        "containsLivingPersonData": {
+          "type": "boolean"
+        },
+        "containsSpecialCategoryData": {
+          "type": "boolean"
+        },
+        "redactionCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "externalNetworkRequired": {
+          "const": false
+        },
+        "telemetryEnabled": {
+          "const": false
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "required": ["data", "checksums", "viewer"],
+      "additionalProperties": true,
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "checksums": {
+          "type": "string"
+        },
+        "viewer": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

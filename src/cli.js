@@ -3,6 +3,8 @@ import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 import { buildArchive } from './builder.js'
+import { verifyChecksums } from './checksum.js'
+import { formatPrivacyInspection, inspectPrivacy } from './inspect.js'
 import { validateArchiveInput } from './schema.js'
 
 function parseArgs(argv) {
@@ -32,6 +34,8 @@ function printHelp() {
 Usage:
   open-memory-archive build <archive-input.json> --out <archive-dir-or-zip>
   open-memory-archive validate <archive-input.json>
+  open-memory-archive verify-checksums <archive-dir>
+  open-memory-archive inspect-privacy <archive-dir>
 
 Options:
   --privacy-profile <name>   public-demo | family-export | research-export
@@ -80,6 +84,29 @@ async function main() {
     return
   }
 
+  if (args.command === 'verify-checksums') {
+    const archiveDir = args._[0]
+    if (!archiveDir) throw new Error('verify-checksums requires an archive directory')
+    const result = await verifyChecksums(resolve(archiveDir))
+    console.log(`Checksums checked: ${result.checked}`)
+    if (!result.ok) {
+      for (const failure of result.failures) {
+        console.error(`Mismatch: ${failure.path}`)
+      }
+      process.exitCode = 1
+      return
+    }
+    console.log('All checksums match.')
+    return
+  }
+
+  if (args.command === 'inspect-privacy') {
+    const archiveDir = args._[0]
+    if (!archiveDir) throw new Error('inspect-privacy requires an archive directory')
+    console.log(formatPrivacyInspection(await inspectPrivacy(resolve(archiveDir))))
+    return
+  }
+
   throw new Error(`Unknown command: ${args.command}`)
 }
 
@@ -87,4 +114,3 @@ main().catch((error) => {
   console.error(error.message)
   process.exitCode = 1
 })
-

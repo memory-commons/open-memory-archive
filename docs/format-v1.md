@@ -10,6 +10,12 @@ Archive inputs use:
 }
 ```
 
+The machine-readable input schema is:
+
+```text
+schema/archive-input-v1.schema.json
+```
+
 The core input entities are:
 
 - `publication`
@@ -39,6 +45,12 @@ manifest.json
 data/archive.json
 data/checksums.sha256
 media/
+```
+
+The machine-readable manifest schema is:
+
+```text
+schema/archive-manifest-v1.schema.json
 ```
 
 ## Privacy Metadata

@@ -22,6 +22,8 @@ git clone git@github.com:memory-commons/open-memory-archive.git
 cd open-memory-archive
 npm test
 npm run build:redacted
+node src/cli.js verify-checksums dist/redacted-family
+node src/cli.js inspect-privacy dist/redacted-family
 ```
 
 Open:
@@ -38,6 +40,8 @@ What to check:
 - the private fixture media file is not copied into the archive
 - living-person and withdrawn-consent fixture details are replaced by redacted placeholders
 - `data/checksums.sha256` lists the generated files
+- `verify-checksums` reports that generated files match the checksum manifest
+- `inspect-privacy` prints the privacy summary and redaction list
 
 Validate an example:
 
@@ -127,6 +131,13 @@ media/
 ## Format
 
 The initial input format is `open-memory-archive-input-v1`. The generated archive format is `open-memory-archive-v1`.
+
+JSON Schema files are published in:
+
+```text
+schema/archive-input-v1.schema.json
+schema/archive-manifest-v1.schema.json
+```
 
 The stable core entities are:
 

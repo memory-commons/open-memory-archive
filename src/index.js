@@ -7,5 +7,5 @@ export {
 } from './schema.js'
 export { redactArchiveInput } from './privacy.js'
 export { buildArchive } from './builder.js'
-export { sha256File, writeChecksumsFile } from './checksum.js'
-
+export { sha256File, writeChecksumsFile, verifyChecksums } from './checksum.js'
+export { inspectPrivacy, formatPrivacyInspection } from './inspect.js'

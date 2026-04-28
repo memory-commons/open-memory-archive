@@ -11,7 +11,9 @@
     ".": "./src/index.js",
     "./schema": "./src/schema.js",
     "./builder": "./src/builder.js",
-    "./privacy": "./src/privacy.js"
+    "./privacy": "./src/privacy.js",
+    "./checksum": "./src/checksum.js",
+    "./inspect": "./src/inspect.js"
   },
   "scripts": {
     "build:example": "node src/cli.js build examples/minimal-public/archive.json --out dist/minimal-public",
@@ -24,6 +26,7 @@
   },
   "files": [
     "src",
+    "schema",
     "docs",
     "examples",
     "README.md",

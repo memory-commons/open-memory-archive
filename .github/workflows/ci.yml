@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Test
+        run: npm test
+
+      - name: Build redacted demo
+        run: npm run build:redacted
+
+      - name: Verify checksums
+        run: node src/cli.js verify-checksums dist/redacted-family
+
+      - name: Inspect privacy
+        run: node src/cli.js inspect-privacy dist/redacted-family

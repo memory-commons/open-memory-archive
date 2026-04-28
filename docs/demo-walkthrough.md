@@ -49,6 +49,18 @@ dist/redacted-family/data/archive.json
 dist/redacted-family/data/checksums.sha256
 ```
 
+Verify integrity:
+
+```bash
+node src/cli.js verify-checksums dist/redacted-family
+```
+
+Inspect privacy:
+
+```bash
+node src/cli.js inspect-privacy dist/redacted-family
+```
+
 The private fixture contains a living-person name, exact birth date, exact address, email, private event, private media item, and a synthetic signed URL. The generated archive should not expose those fields in public-demo mode.
 
 ## 4. Why This Demonstrates Value
@@ -63,7 +75,8 @@ This is the minimum useful commons contribution:
 - a privacy-aware export path
 - a static viewer
 - checksums for integrity inspection
+- a privacy inspection command
 
 ## 5. Current Limits
 
-This is not yet a complete archive ecosystem. Missing pieces include JSON Schema files, better viewer UX, zip-output tests, an `inspect-privacy` command, richer graph rendering, and import adapters from existing systems.
+This is not yet a complete archive ecosystem. Missing pieces include better viewer UX, zip-output tests, richer graph rendering, and import adapters from existing systems.

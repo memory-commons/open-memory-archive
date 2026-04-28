@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { createReadStream } from 'node:fs'
-import { mkdir, readdir, stat, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
 import { dirname, join, relative, sep } from 'node:path'
 
 export async function sha256File(filePath) {
@@ -46,7 +46,52 @@ export async function writeChecksumsFile(rootDir, outputPath = 'data/checksums.s
   return entries
 }
 
+export function parseChecksumsFile(text) {
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const match = line.match(/^([a-f0-9]{64})\s+\*?(.+)$/i)
+      if (!match) throw new Error(`Invalid checksum line: ${line}`)
+      return { sha256: match[1].toLowerCase(), path: match[2] }
+    })
+}
+
+export async function verifyChecksums(rootDir, checksumsPath = 'data/checksums.sha256') {
+  const checksumText = await readFile(join(rootDir, checksumsPath), 'utf-8')
+  const entries = parseChecksumsFile(checksumText)
+  const results = []
+
+  for (const entry of entries) {
+    const filePath = join(rootDir, entry.path)
+    try {
+      const actual = await sha256File(filePath)
+      results.push({
+        path: entry.path,
+        expected: entry.sha256,
+        actual,
+        ok: actual === entry.sha256,
+      })
+    } catch (error) {
+      results.push({
+        path: entry.path,
+        expected: entry.sha256,
+        actual: null,
+        ok: false,
+        error: error.message,
+      })
+    }
+  }
+
+  return {
+    ok: results.every((result) => result.ok),
+    checked: results.length,
+    failures: results.filter((result) => !result.ok),
+    results,
+  }
+}
+
 export async function fileSizeBytes(filePath) {
   return (await stat(filePath)).size
 }
-

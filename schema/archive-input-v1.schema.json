@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://memory-commons.org/schemas/open-memory-archive/archive-input-v1.schema.json",
+  "title": "Open Memory Archive Input v1",
+  "type": "object",
+  "required": ["format", "publication"],
+  "additionalProperties": true,
+  "properties": {
+    "format": {
+      "const": "open-memory-archive-input-v1"
+    },
+    "publication": {
+      "$ref": "#/$defs/publication"
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/chapter"
+      },
+      "default": []
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/person"
+      },
+      "default": []
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event"
+      },
+      "default": []
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/location"
+      },
+      "default": []
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/media"
+      },
+      "default": []
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relationship"
+      },
+      "default": []
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "privacy": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "privacyScope": {
+          "enum": ["public", "family", "private", "research", "redacted"]
+        },
+        "consentStatus": {
+          "enum": ["granted", "withdrawn", "unknown", "not_applicable", "not_required"]
+        },
+        "livingPersonStatus": {
+          "enum": ["living", "deceased", "unknown", "organization", "fictional", "not_applicable"]
+        },
+        "containsPersonalData": {
+          "type": "boolean"
+        },
+        "containsSpecialCategoryData": {
+          "type": "boolean"
+        },
+        "legalBasisHint": {
+          "enum": ["consent", "contract", "legitimate_interest", "research", "household", "unknown"]
+        },
+        "sourceConsentRecordId": {
+          "type": "string"
+        },
+        "lastReviewedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reviewedBy": {
+          "type": "string"
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": ["string", "null"]
+        },
+        "locale": {
+          "type": "string"
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/section"
+          },
+          "default": []
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "person": {
+      "type": "object",
+      "required": ["id", "displayName"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["id", "title"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string"
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "localPath": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": ["string", "null"]
+        },
+        "privacy": {
+          "$ref": "#/$defs/privacy"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["sourcePath"]
+        },
+        {
+          "required": ["localPath"]
+        }
+      ]
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["id", "source", "target", "type"],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
