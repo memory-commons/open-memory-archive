@@ -18,7 +18,7 @@ Requirements:
 Clone and run:
 
 ```bash
-git clone <repo-url>
+git clone git@github.com:memory-commons/open-memory-archive.git
 cd open-memory-archive
 npm test
 npm run build:redacted
