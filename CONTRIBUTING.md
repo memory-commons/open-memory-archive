@@ -4,11 +4,11 @@ Contributions are welcome when they improve portability, privacy, accessibility,
 
 ## Principles
 
-- Keep the core builder independent from proprietary services.
-- Do not make OpenAI, Runpod, Supabase Cloud, or any SaaS provider required.
-- Do not add telemetry.
-- Do not add customer or real family data to fixtures.
-- Prefer deterministic, inspectable output.
+The core builder should stay independent from proprietary services. OpenAI, Runpod, Supabase Cloud, and other SaaS providers must not become required for normal use.
+
+The project should not add telemetry, and fixtures must not contain customer data or real family materials. Use synthetic examples that are safe to publish and easy for reviewers to inspect.
+
+Prefer deterministic output over hidden behaviour. Archive files, privacy metadata, redaction records, and checksums should be understandable from the repository without access to a hosted service.
 
 ## Development
 

@@ -4,6 +4,10 @@ Open Memory Archive is an offline-first archive format, builder, validator, and 
 
 The project exists to make memory archives portable. A family, researcher, local cultural organisation, or self-hosted service should be able to create a self-contained archive that can be opened without an account, proprietary backend, signed URLs, telemetry, or external AI service.
 
+## Origins
+
+Open Memory Archive began as the data export and preservation layer of [OmaMemoirs](https://www.omamemoirs.fi), a memoir platform. It has been extracted and published as an independent specification and toolkit. It does not require OmaMemoirs infrastructure and is designed to be adopted by any platform, researcher, or local archive organisation.
+
 ## Status
 
 Early public extraction. The current release is intended to demonstrate the archive format, privacy metadata, deterministic redaction, and a local builder/viewer workflow.
@@ -43,9 +47,9 @@ What to check:
 - `verify-checksums` reports that generated files match the checksum manifest
 - `inspect-privacy` prints the privacy summary and redaction list
 
-## Use Without OmaMemoirs
+## Use With Ordinary Files
 
-Open Memory Archive is not limited to exports from one platform. The `community-memory` example starts from ordinary files:
+The `community-memory` example starts from ordinary files:
 
 ```text
 examples/community-memory/
@@ -76,7 +80,7 @@ Open:
 dist/community-memory/index.html
 ```
 
-This path demonstrates that a local history group, family, or researcher can create an offline archive from Markdown, CSV, and local media files without using OmaMemoirs.
+This path demonstrates that a local history group, family, or researcher can create an offline archive from Markdown, CSV, and local media files with no platform account.
 
 Validate an example:
 
@@ -104,19 +108,13 @@ dist/redacted-family/index.html
 
 The viewer is static HTML with embedded archive data. It does not require a server.
 
-## What This Is
-
-- A versioned archive input format.
-- A local builder that writes static archive files.
-- A validator for archive inputs and manifests.
-- A deterministic privacy/redaction layer.
-- A static offline viewer.
-
 ## Why It Matters
 
 Many personal-history and community-archive tools leave users dependent on a hosted product, expiring media URLs, account access, or undocumented exports. Open Memory Archive focuses on the exit path: producing a readable and machine-readable archive that can survive outside the original platform.
 
-The first demo is intentionally small. Its value is that it proves the core portability loop:
+The project includes a versioned archive input format, a local builder, schema validation, deterministic privacy redaction, and a static offline viewer. It is not a hosted service or a complete GDPR compliance system; it is a portable archive tool that still leaves legal basis, consent collection, and data-controller duties with the organisations using it.
+
+The first release is small by design. The goal is to verify the full portability loop end to end:
 
 ```text
 structured memory data + local media
@@ -127,25 +125,9 @@ structured memory data + local media
   -> no-network viewer
 ```
 
-## What This Is Not
-
-- Not a hosted SaaS.
-- Not a complete GDPR compliance system.
-- Not a consent management platform.
-- Not a replacement for a data controller's legal obligations.
-- Not tied to OmaMemoirs Oy infrastructure.
-
 ## Privacy Properties
 
-The builder:
-
-- runs locally
-- does not send data to external APIs
-- does not require OpenAI, Runpod, Supabase, or any proprietary backend
-- does not generate signed URLs
-- does not add telemetry
-- writes privacy metadata into `manifest.json`
-- applies redaction by default in `public-demo` mode
+The builder runs entirely locally and makes no external network calls. It writes privacy metadata into `manifest.json` and applies redaction in `public-demo` mode by default. There is no telemetry, no signed URL generation, and no dependency on OpenAI, Supabase, Runpod, or any proprietary backend.
 
 See [PRIVACY.md](./PRIVACY.md) and [DATA_PROTECTION.md](./DATA_PROTECTION.md).
 
