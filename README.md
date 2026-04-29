@@ -47,7 +47,7 @@ What to check:
 - `verify-checksums` reports that generated files match the checksum manifest
 - `inspect-privacy` prints the privacy summary and redaction list
 
-## Use With Ordinary Files
+## File-based Archives
 
 The `community-memory` example starts from ordinary files:
 
@@ -79,8 +79,6 @@ Open:
 ```text
 dist/community-memory/index.html
 ```
-
-This path demonstrates that a local history group, family, or researcher can create an offline archive from Markdown, CSV, and local media files with no platform account.
 
 Validate an example:
 

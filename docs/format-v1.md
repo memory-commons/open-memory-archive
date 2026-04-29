@@ -112,3 +112,5 @@ Redactions are stored as records:
 ## Interoperability
 
 The v1 format intentionally keeps the core small. Application-specific fields should be placed under `extensions`.
+
+For mappings to Schema.org, CIDOC-CRM, and GEDCOM X, see [docs/schema-alignment.md](schema-alignment.md).
