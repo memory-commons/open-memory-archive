@@ -1,5 +1,12 @@
 # Open Memory Archive
 
+[![CI](https://github.com/memory-commons/open-memory-archive/actions/workflows/ci.yml/badge.svg)](https://github.com/memory-commons/open-memory-archive/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/memory-commons/open-memory-archive/blob/main/LICENSE)
+[![Node.js 20+](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
+[![Zero runtime dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg)](#)
+[![No telemetry](https://img.shields.io/badge/telemetry-none-brightgreen.svg)](#)
+[![Works offline](https://img.shields.io/badge/works-offline-blue.svg)](#)
+
 Open Memory Archive is an offline-first archive format, builder, validator, and static viewer for personal and community memory projects.
 
 The project exists to make memory archives portable. A family, researcher, local cultural organisation, or self-hosted service should be able to create a self-contained archive that can be opened without an account, proprietary backend, signed URLs, telemetry, or external AI service.
@@ -11,6 +18,36 @@ Open Memory Archive began as the data export and preservation layer of [OmaMemoi
 ## Status
 
 Early public extraction. The current release is intended to demonstrate the archive format, privacy metadata, deterministic redaction, and a local builder/viewer workflow.
+
+## What It Produces
+
+Running the builder on the `community-memory` example produces an offline archive folder:
+
+```text
+dist/community-memory/
+├── index.html          ← open in any browser, no internet needed
+├── manifest.json       ← machine-readable: format, privacy summary, checksums
+├── data/
+│   ├── archive.json    ← structured data: chapters, people, events, locations, media
+│   └── checksums.sha256
+└── media/
+    └── media-note.txt
+```
+
+`index.html` opens directly in a browser. It shows chapters, people, events, and locations. Items marked private are shown as redacted placeholders — the private content is never written into the archive.
+
+`manifest.json` always includes:
+
+```json
+{
+  "externalNetworkRequired": false,
+  "telemetryEnabled": false,
+  "redactionCount": 3
+}
+```
+
+<!-- TODO: add screenshot of index.html opened in browser -->
+<!-- TODO: add screenshot of manifest.json privacy summary -->
 
 ## Quick Start
 
@@ -122,6 +159,28 @@ structured memory data + local media
   -> checksums
   -> no-network viewer
 ```
+
+## Privacy By Default
+
+Every entity in an archive carries a `privacy` field. The builder reads these fields and applies a redaction policy before writing the output.
+
+In `public-demo` mode:
+
+| Input | Output |
+|-------|--------|
+| Living person with unknown consent | Replaced with `"Redacted person"` placeholder |
+| Event with `consentStatus: withdrawn` | Removed, recorded in redaction log |
+| Exact birth date of living person | Generalised to year range or removed |
+| Private media file | Not copied into archive |
+| Signed URL or private storage path | Stripped |
+
+The redaction log is written into `data/archive.json` and summarised in `manifest.json`. You can inspect it:
+
+```bash
+node src/cli.js inspect-privacy dist/redacted-family
+```
+
+The tool does not make legal decisions. Operators remain responsible for lawful basis, consent collection, and data subject requests. See [PRIVACY.md](./PRIVACY.md) and [DATA_PROTECTION.md](./DATA_PROTECTION.md).
 
 ## Privacy Properties
 
