@@ -17,7 +17,7 @@ Open Memory Archive began as the data export and preservation layer of [OmaMemoi
 
 ## Status
 
-Early public extraction. The current release is intended to demonstrate the archive format, privacy metadata, deterministic redaction, and a local builder/viewer workflow.
+v0.1.0 — first public release. The archive format, builder, validator, redaction layer, and static offline viewer are working. Download the [latest release](https://github.com/memory-commons/open-memory-archive/releases/latest) to try the demo archives without cloning.
 
 ## What It Produces
 
@@ -159,6 +159,13 @@ structured memory data + local media
   -> checksums
   -> no-network viewer
 ```
+
+### Who uses it
+
+- **A local history group** collects interview notes, old photographs, and event records into a portable archive it can pass to a public library.
+- **A family** records a grandparent's stories across several chapters, with living relatives redacted in the public version and full detail preserved in the family-only version.
+- **An oral history researcher** exports a project archive that can be verified, cited, and reopened a decade later without any hosted service.
+- **Any self-hosted platform** can adopt the format as its export layer so users are never locked in.
 
 ## Privacy By Default
 
