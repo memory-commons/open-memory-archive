@@ -1,0 +1,195 @@
+{
+  "format": "open-memory-archive-input-v1",
+  "publication": {
+    "id": "redacted-family",
+    "title": "Redacted Family Archive Demo",
+    "author": "Open Memory Archive contributors",
+    "locale": "en",
+    "privacy": {
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": true,
+      "containsSpecialCategoryData": false
+    }
+  },
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "Family Gathering",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": true
+      },
+      "sections": [
+        {
+          "id": "section-public",
+          "title": "Public context",
+          "text": "This synthetic example shows how a public archive can include family-history context while redacting living-person-sensitive fields.",
+          "privacy": {
+            "privacyScope": "public",
+            "consentStatus": "not_required",
+            "containsPersonalData": false
+          }
+        },
+        {
+          "id": "section-private",
+          "title": "Redacted section",
+          "text": "[Redacted]",
+          "privacy": {
+            "privacyScope": "redacted",
+            "consentStatus": "unknown",
+            "livingPersonStatus": "unknown",
+            "containsPersonalData": true,
+            "containsSpecialCategoryData": false,
+            "legalBasisHint": "unknown"
+          },
+          "redacted": true
+        }
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "person-living",
+      "displayName": "Redacted person",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    },
+    {
+      "id": "person-deceased",
+      "displayName": "Matti Example",
+      "description": "Synthetic deceased person in the public portion of the fixture.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "deceased",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event-public",
+      "title": "A remembered summer meal",
+      "date": "1977",
+      "description": "A synthetic event safe for public demo export.",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    },
+    {
+      "id": "event-withdrawn",
+      "title": "Redacted item",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "withdrawn",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    }
+  ],
+  "locations": [
+    {
+      "id": "location-public",
+      "name": "Example Region",
+      "country": "Finland",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "media-public",
+      "title": "Public sample note",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "containsPersonalData": false
+      },
+      "localPath": "media/media-public.txt"
+    },
+    {
+      "id": "media-private",
+      "title": "Redacted media",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-1",
+      "source": "person-deceased",
+      "target": "event-public",
+      "type": "remembered"
+    }
+  ],
+  "redactions": [
+    {
+      "path": "$.chapters[0].sections[1]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "replacement": "placeholder"
+    },
+    {
+      "path": "$.people[0]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "replacement": "placeholder"
+    },
+    {
+      "path": "$.events[1]",
+      "reason": "withdrawn_consent",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "replacement": "placeholder"
+    },
+    {
+      "path": "$.media[1]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "replacement": "placeholder"
+    }
+  ],
+  "privacySummary": {
+    "profile": "public-demo",
+    "generatedAt": "2026-05-11T18:01:41.355Z",
+    "generatedByTool": "open-memory-archive",
+    "redactionPolicy": "default-public-demo-v1",
+    "containsPersonalData": true,
+    "containsLivingPersonData": false,
+    "containsSpecialCategoryData": false,
+    "redactionCount": 4,
+    "externalNetworkRequired": false,
+    "telemetryEnabled": false
+  }
+}

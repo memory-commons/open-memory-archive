@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harbour Street Community Memories</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; background: Canvas; color: CanvasText; }
+    header { padding: 2rem; border-bottom: 1px solid color-mix(in srgb, CanvasText 16%, transparent); }
+    main { width: min(980px, calc(100% - 2rem)); margin: 0 auto; padding: 1.5rem 0 3rem; }
+    h1 { margin: 0 0 .4rem; font-size: clamp(1.8rem, 4vw, 3rem); }
+    h2 { margin-top: 2rem; border-bottom: 1px solid color-mix(in srgb, CanvasText 14%, transparent); padding-bottom: .4rem; }
+    h3 { margin-bottom: .25rem; }
+    .meta, .privacy { color: color-mix(in srgb, CanvasText 70%, transparent); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
+    .card { border: 1px solid color-mix(in srgb, CanvasText 14%, transparent); border-radius: 8px; padding: .85rem; background: color-mix(in srgb, Canvas 94%, CanvasText 6%); }
+    .redacted { border-style: dashed; }
+    .badge { display: inline-block; border: 1px solid color-mix(in srgb, CanvasText 24%, transparent); border-radius: 999px; padding: .1rem .45rem; font-size: .78rem; margin-left: .35rem; }
+    .section { margin: 1rem 0 1.25rem; line-height: 1.65; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+    a { color: LinkText; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Harbour Street Community Memories</h1>
+    <div class="meta">Example Local History Group · 2026-05-11T17:58:50.066Z</div>
+    <p class="privacy">Offline archive. External network required: no. Telemetry enabled: no. Redactions: 3.</p>
+  </header>
+  <main id="app"></main>
+  <script type="application/json" id="archive-data">{"archiveData":{"format":"open-memory-archive-input-v1","publication":{"id":"community-memory-demo","title":"Harbour Street Community Memories","author":"Example Local History Group","locale":"en","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":true,"containsSpecialCategoryData":false}},"chapters":[{"id":"harbour","title":"Harbour Days","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false},"sections":[{"id":"harbour-body","title":"Harbour Days","text":"On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. This synthetic chapter is written as ordinary Markdown so a local history group can prepare an archive without using a dedicated platform.\n\nThe archive builder keeps the text readable, records privacy metadata, and packages the material into an offline folder.","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false}}]},{"id":"school","title":"The Old School","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false},"sections":[{"id":"school-body","title":"The Old School","text":"The old school building became a meeting place after classes ended. People used the hall for choir rehearsals, history evenings, and winter gatherings.\n\nThis example does not contain real people or real private records.","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false}}]}],"people":[{"id":"person-anna","displayName":"Redacted person","privacy":{"privacyScope":"redacted","consentStatus":"unknown","livingPersonStatus":"living","containsPersonalData":true,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"},"redacted":true},{"id":"person-matti","displayName":"Matti Example","description":"Synthetic deceased narrator for public demo","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"deceased","containsPersonalData":true,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"}}],"events":[{"id":"event-harbour-market","title":"Harbour market mornings","date":"1974","description":"Synthetic public community memory event","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"}},{"id":"event-private-meeting","title":"Redacted item","privacy":{"privacyScope":"redacted","consentStatus":"unknown","livingPersonStatus":"living","containsPersonalData":true,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"},"redacted":true}],"locations":[{"id":"location-harbour","name":"Harbour Street","region":"Example Region","country":"Finland","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"}},{"id":"location-school","name":"Old School Hall","region":"Example Region","country":"Finland","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"}}],"media":[{"id":"media-note","title":"Harbour note","mediaType":"text/plain","privacy":{"privacyScope":"public","consentStatus":"not_required","livingPersonStatus":"not_applicable","containsPersonalData":false,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"},"localPath":"media/media-note.txt"},{"id":"media-private","title":"Redacted media","mediaType":"text/plain","privacy":{"privacyScope":"redacted","consentStatus":"unknown","livingPersonStatus":"living","containsPersonalData":true,"containsSpecialCategoryData":false,"legalBasisHint":"unknown"},"redacted":true}],"relationships":[{"id":"rel-anna-harbour","source":"person-anna","target":"event-harbour-market","type":"remembered"}],"extensions":{},"redactions":[{"path":"$.people[0]","reason":"private_scope","ruleId":"default-public-demo-v1","appliedAt":"2026-05-11T17:58:50.061Z","replacement":"placeholder"},{"path":"$.events[1]","reason":"private_scope","ruleId":"default-public-demo-v1","appliedAt":"2026-05-11T17:58:50.061Z","replacement":"placeholder"},{"path":"$.media[1]","reason":"private_scope","ruleId":"default-public-demo-v1","appliedAt":"2026-05-11T17:58:50.061Z","replacement":"placeholder"}],"privacySummary":{"profile":"public-demo","generatedAt":"2026-05-11T17:58:50.061Z","generatedByTool":"open-memory-archive","redactionPolicy":"default-public-demo-v1","containsPersonalData":true,"containsLivingPersonData":false,"containsSpecialCategoryData":false,"redactionCount":3,"externalNetworkRequired":false,"telemetryEnabled":false}},"manifest":{"format":"open-memory-archive-v1","formatVersion":1,"builderVersion":"0.1.0","generatedAt":"2026-05-11T17:58:50.066Z","publication":{"id":"community-memory-demo","title":"Harbour Street Community Memories","locale":"en"},"privacy":{"profile":"public-demo","generatedAt":"2026-05-11T17:58:50.061Z","generatedByTool":"open-memory-archive","redactionPolicy":"default-public-demo-v1","containsPersonalData":true,"containsLivingPersonData":false,"containsSpecialCategoryData":false,"redactionCount":3,"externalNetworkRequired":false,"telemetryEnabled":false},"files":{"data":"data/archive.json","checksums":"data/checksums.sha256","viewer":"index.html"}}}</script>
+  <script>
+    const { archiveData, manifest } = JSON.parse(document.getElementById('archive-data').textContent);
+    const app = document.getElementById('app');
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const badge = (item) => item?.redacted ? '<span class="badge">redacted</span>' : '';
+    const card = (body, item) => '<article class="card ' + (item?.redacted ? 'redacted' : '') + '">' + body + '</article>';
+    const list = (title, items, render) => '<section><h2>' + esc(title) + '</h2><div class="grid">' + (items || []).map(render).join('') + '</div></section>';
+    const chapters = (archiveData.chapters || []).map((chapter) => '<section><h2>' + esc(chapter.title) + badge(chapter) + '</h2>' + (chapter.sections || []).map((section) => '<div class="section"><h3>' + esc(section.title || '') + badge(section) + '</h3><p>' + esc(section.text || '') + '</p></div>').join('') + '</section>').join('');
+    app.innerHTML = [
+      chapters,
+      list('People', archiveData.people, (person) => card('<strong>' + esc(person.displayName) + '</strong>' + badge(person) + '<p>' + esc(person.description || person.biography || '') + '</p>', person)),
+      list('Events', archiveData.events, (event) => card('<strong>' + esc(event.title) + '</strong>' + badge(event) + '<p>' + esc(event.date || '') + '</p><p>' + esc(event.description || '') + '</p>', event)),
+      list('Locations', archiveData.locations, (location) => card('<strong>' + esc(location.name) + '</strong>' + badge(location) + '<p>' + esc([location.region, location.country].filter(Boolean).join(', ')) + '</p>', location)),
+      list('Media', archiveData.media, (media) => card('<strong>' + esc(media.title || media.id) + '</strong>' + badge(media) + (media.localPath ? '<p><a href="' + esc(media.localPath) + '">' + esc(media.localPath) + '</a></p>' : '<p>Media unavailable in this privacy profile.</p>'), media)),
+      '<section><h2>Archive Manifest</h2><pre>' + esc(JSON.stringify(manifest, null, 2)) + '</pre></section>'
+    ].join('');
+  </script>
+</body>
+</html>

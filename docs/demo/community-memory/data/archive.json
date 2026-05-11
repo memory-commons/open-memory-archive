@@ -1,0 +1,229 @@
+{
+  "format": "open-memory-archive-input-v1",
+  "publication": {
+    "id": "community-memory-demo",
+    "title": "Harbour Street Community Memories",
+    "author": "Example Local History Group",
+    "locale": "en",
+    "privacy": {
+      "privacyScope": "public",
+      "consentStatus": "not_required",
+      "livingPersonStatus": "not_applicable",
+      "containsPersonalData": true,
+      "containsSpecialCategoryData": false
+    }
+  },
+  "chapters": [
+    {
+      "id": "harbour",
+      "title": "Harbour Days",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false
+      },
+      "sections": [
+        {
+          "id": "harbour-body",
+          "title": "Harbour Days",
+          "text": "On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. This synthetic chapter is written as ordinary Markdown so a local history group can prepare an archive without using a dedicated platform.\n\nThe archive builder keeps the text readable, records privacy metadata, and packages the material into an offline folder.",
+          "privacy": {
+            "privacyScope": "public",
+            "consentStatus": "not_required",
+            "livingPersonStatus": "not_applicable",
+            "containsPersonalData": false,
+            "containsSpecialCategoryData": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "school",
+      "title": "The Old School",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false
+      },
+      "sections": [
+        {
+          "id": "school-body",
+          "title": "The Old School",
+          "text": "The old school building became a meeting place after classes ended. People used the hall for choir rehearsals, history evenings, and winter gatherings.\n\nThis example does not contain real people or real private records.",
+          "privacy": {
+            "privacyScope": "public",
+            "consentStatus": "not_required",
+            "livingPersonStatus": "not_applicable",
+            "containsPersonalData": false,
+            "containsSpecialCategoryData": false
+          }
+        }
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "person-anna",
+      "displayName": "Redacted person",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    },
+    {
+      "id": "person-matti",
+      "displayName": "Matti Example",
+      "description": "Synthetic deceased narrator for public demo",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "deceased",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event-harbour-market",
+      "title": "Harbour market mornings",
+      "date": "1974",
+      "description": "Synthetic public community memory event",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      }
+    },
+    {
+      "id": "event-private-meeting",
+      "title": "Redacted item",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    }
+  ],
+  "locations": [
+    {
+      "id": "location-harbour",
+      "name": "Harbour Street",
+      "region": "Example Region",
+      "country": "Finland",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      }
+    },
+    {
+      "id": "location-school",
+      "name": "Old School Hall",
+      "region": "Example Region",
+      "country": "Finland",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "media-note",
+      "title": "Harbour note",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "public",
+        "consentStatus": "not_required",
+        "livingPersonStatus": "not_applicable",
+        "containsPersonalData": false,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "localPath": "media/media-note.txt"
+    },
+    {
+      "id": "media-private",
+      "title": "Redacted media",
+      "mediaType": "text/plain",
+      "privacy": {
+        "privacyScope": "redacted",
+        "consentStatus": "unknown",
+        "livingPersonStatus": "living",
+        "containsPersonalData": true,
+        "containsSpecialCategoryData": false,
+        "legalBasisHint": "unknown"
+      },
+      "redacted": true
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-anna-harbour",
+      "source": "person-anna",
+      "target": "event-harbour-market",
+      "type": "remembered"
+    }
+  ],
+  "extensions": {},
+  "redactions": [
+    {
+      "path": "$.people[0]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "replacement": "placeholder"
+    },
+    {
+      "path": "$.events[1]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "replacement": "placeholder"
+    },
+    {
+      "path": "$.media[1]",
+      "reason": "private_scope",
+      "ruleId": "default-public-demo-v1",
+      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "replacement": "placeholder"
+    }
+  ],
+  "privacySummary": {
+    "profile": "public-demo",
+    "generatedAt": "2026-05-11T17:58:50.061Z",
+    "generatedByTool": "open-memory-archive",
+    "redactionPolicy": "default-public-demo-v1",
+    "containsPersonalData": true,
+    "containsLivingPersonData": false,
+    "containsSpecialCategoryData": false,
+    "redactionCount": 3,
+    "externalNetworkRequired": false,
+    "telemetryEnabled": false
+  }
+}

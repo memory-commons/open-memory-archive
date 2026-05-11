@@ -7,6 +7,8 @@
 [![No telemetry](https://img.shields.io/badge/telemetry-none-brightgreen.svg)](#)
 [![Works offline](https://img.shields.io/badge/works-offline-blue.svg)](#)
 
+**[→ Live demo (no download needed)](https://memory-commons.github.io/open-memory-archive/demo/community-memory/index.html)**
+
 Open Memory Archive is an offline-first archive format, builder, validator, and static viewer for personal and community memory projects.
 
 The project exists to make memory archives portable. A family, researcher, local cultural organisation, or self-hosted service should be able to create a self-contained archive that can be opened without an account, proprietary backend, signed URLs, telemetry, or external AI service.
