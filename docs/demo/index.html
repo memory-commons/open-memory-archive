@@ -2,11 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Open Memory Archive — Live Demo</title>
-  <meta http-equiv="refresh" content="0; url=community-memory/index.html">
-  <style>body{font-family:system-ui;padding:2rem;}a{color:LinkText;}</style>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: Canvas;
+      --fg: CanvasText;
+      --muted: color-mix(in srgb, CanvasText 68%, Canvas 32%);
+      --line: color-mix(in srgb, CanvasText 18%, Canvas 82%);
+      --soft: color-mix(in srgb, CanvasText 5%, Canvas 95%);
+      --accent: #146c5f;
+      --accent-2: #724f1d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    header {
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    a {
+      color: LinkText;
+    }
+
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent);
+      color: white;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--fg);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--soft);
+    }
+
+    .panel strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .panel .button {
+      justify-content: center;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .note {
+      border-left: 4px solid var(--accent-2);
+      margin-top: 28px;
+      padding: 14px 18px;
+      background: var(--soft);
+    }
+
+    footer {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 24px, 960px);
+        padding: 32px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to demo... <a href="community-memory/index.html">click here if not redirected</a></p>
+  <main>
+    <header>
+      <h1>Open Memory Archive Live Demo</h1>
+      <p class="lede">This demo shows how ordinary memory project files become a portable offline archive with privacy redaction applied before publication.</p>
+      <div class="actions" aria-label="Demo links">
+        <a class="button" href="community-memory/index.html">Archive 1: Community memory</a>
+        <a class="button secondary" href="redacted-family/index.html">Archive 2: Redacted family</a>
+        <a class="button secondary" href="privacy-redaction-demo.html">Privacy guide</a>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Choose a demo page">
+      <div class="panel">
+        <strong>Archive 1: Community memory</strong>
+        <p>The main file-based demo. It shows a local history archive built from Markdown, CSV, and media files, with 3 items redacted.</p>
+        <a class="button" href="community-memory/index.html">Open community archive</a>
+      </div>
+      <div class="panel">
+        <strong>Archive 2: Redacted family</strong>
+        <p>A privacy-focused demo. It shows withdrawn consent, family-only scope, private text, private media, and signed URL removal.</p>
+        <a class="button secondary" href="redacted-family/index.html">Open redacted family archive</a>
+      </div>
+      <div class="panel">
+        <strong>Privacy guide</strong>
+        <p>A plain-language explanation of how source privacy labels become redacted placeholders in the public archive.</p>
+        <a class="button secondary" href="privacy-redaction-demo.html">Read the privacy guide</a>
+      </div>
+    </section>
+
+    <section class="note" aria-label="Archive contents note">
+      <h2>What you are opening</h2>
+      <p>Each archive is a static folder containing HTML, JSON, checksums, and copied public media. The viewer opens from files in a browser. It does not need a login, database, API, or hosted backend.</p>
+      <p>Private media is not included in the public archive, and the redaction log is written into the archive data so the export can be inspected later.</p>
+    </section>
+
+    <footer>
+      Open Memory Archive demo. No external network required. No telemetry.
+    </footer>
+  </main>
 </body>
 </html>

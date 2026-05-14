@@ -7,7 +7,7 @@
 [![No telemetry](https://img.shields.io/badge/telemetry-none-brightgreen.svg)](#)
 [![Works offline](https://img.shields.io/badge/works-offline-blue.svg)](#)
 
-**[→ Live demo (no download needed)](https://memory-commons.github.io/open-memory-archive/demo/community-memory/index.html)**
+**[→ Live demo (no download needed)](https://memory-commons.github.io/open-memory-archive/demo/)**
 
 Open Memory Archive is an offline-first archive format, builder, validator, and static viewer for personal and community memory projects.
 

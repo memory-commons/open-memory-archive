@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Privacy Redaction Works — Open Memory Archive</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: Canvas;
+      --fg: CanvasText;
+      --muted: color-mix(in srgb, CanvasText 68%, Canvas 32%);
+      --line: color-mix(in srgb, CanvasText 18%, Canvas 82%);
+      --soft: color-mix(in srgb, CanvasText 5%, Canvas 95%);
+      --accent: #146c5f;
+      --warn: #7a4d00;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+
+    nav {
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 26px 0 10px;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    a {
+      color: LinkText;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    .lede {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 1.125rem;
+    }
+
+    .callout {
+      border-left: 4px solid var(--warn);
+      margin: 24px 0;
+      padding: 16px 18px;
+      background: var(--soft);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0 8px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--soft);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0 24px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    ul {
+      margin: 0 0 16px;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent);
+      color: white;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--fg);
+    }
+
+    footer {
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 24px, 1040px);
+        padding: 30px 0;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a href="index.html">Live demo</a> / How privacy redaction works</nav>
+
+    <header>
+      <h1>How privacy labels become redactions</h1>
+      <p class="lede">Open Memory Archive does not hide private material with a visual overlay. It reads privacy labels before export, writes a public archive with placeholders, and leaves private source text or private media out of that public archive.</p>
+      <div class="actions" aria-label="Open demo archives">
+        <a class="button" href="community-memory/index.html">Open community memory archive</a>
+        <a class="button secondary" href="redacted-family/index.html">Open redacted family archive</a>
+      </div>
+    </header>
+
+    <section class="callout" aria-label="Current demo scope">
+      <p><strong>This demo is not a rule-editing screen.</strong> The current public toolkit shows the archive format, builder, redaction layer, and offline viewer. Archive organisers mark privacy in source data such as CSV or JSON. A future application can expose the same fields as checkboxes or dropdowns.</p>
+    </section>
+
+    <section aria-labelledby="process-title">
+      <h2 id="process-title">The process</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>1. Mark the source material</strong>
+          <p>Each person, event, chapter, place, or media item carries simple privacy fields.</p>
+        </div>
+        <div class="step">
+          <strong>2. Build a public archive</strong>
+          <p>The builder uses the <code>public-demo</code> profile to decide what can be shown.</p>
+        </div>
+        <div class="step">
+          <strong>3. Publish only the safe output</strong>
+          <p>The public archive contains placeholders, public media, checksums, and a redaction log.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="fields-title">
+      <h2 id="fields-title">How someone marks privacy before export</h2>
+      <p>Before export, each item is marked with simple privacy fields:</p>
+      <ul>
+        <li><code>public</code>: can be shown in the public archive</li>
+        <li><code>family</code>: keep for family or private copies; redact from the public demo</li>
+        <li><code>private</code>: do not publish</li>
+        <li><code>consentStatus: withdrawn</code>: hide because consent was withdrawn</li>
+        <li><code>livingPersonStatus: living</code>: treat cautiously unless public consent is clear</li>
+        <li><code>containsPersonalData: true</code>: this item contains personal information</li>
+      </ul>
+      <p>In the file-based demo, these fields appear as CSV columns such as <code>privacyScope</code>, <code>consentStatus</code>, <code>livingPersonStatus</code>, <code>containsPersonalData</code>, and <code>containsSpecialCategoryData</code>.</p>
+    </section>
+
+    <section aria-labelledby="community-title">
+      <h2 id="community-title">Community memory demo: 3 redactions</h2>
+      <p>The main demo archive is built from ordinary Markdown, CSV, and local media files. It produces the current public demo with <code>3 items redacted</code>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Source item</th>
+              <th>Privacy labels</th>
+              <th>Public archive result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>person-anna</code> / Anna K.</td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted person</code> placeholder</td>
+            </tr>
+            <tr>
+              <td><code>event-private-meeting</code></td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted item</code> placeholder</td>
+            </tr>
+            <tr>
+              <td><code>media-private</code> / Private participant note</td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted media</code>; source file not copied</td>
+            </tr>
+            <tr>
+              <td><code>person-matti</code> / Matti Example</td>
+              <td><code>public</code>, <code>not_required</code>, <code>deceased</code>, <code>containsPersonalData: true</code></td>
+              <td>Displayed in the public archive</td>
+            </tr>
+            <tr>
+              <td><code>media-note</code> / Harbour note</td>
+              <td><code>public</code>, <code>not_required</code>, <code>not_applicable</code>, <code>containsPersonalData: false</code></td>
+              <td>Copied into the archive media folder</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="family-title">
+      <h2 id="family-title">Redacted family demo: consent and private media</h2>
+      <p>The second demo uses a more privacy-focused synthetic family archive. It shows withdrawn consent, family-only scope, private text, private media, and signed URL removal.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Source item</th>
+              <th>Privacy labels</th>
+              <th>Public archive result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>section-private</code> / Private detail</td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted section</code>; private text removed</td>
+            </tr>
+            <tr>
+              <td><code>person-living</code> / Liisa Living Example</td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted person</code> placeholder</td>
+            </tr>
+            <tr>
+              <td><code>event-withdrawn</code> / Withdrawn private event</td>
+              <td><code>private</code>, <code>withdrawn consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
+              <td><code>Redacted item</code>; reason is <code>withdrawn_consent</code></td>
+            </tr>
+            <tr>
+              <td><code>media-private</code> / Private family recording</td>
+              <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code>, signed URL present</td>
+              <td><code>Redacted media</code>; private file and signed URL not included</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="callout" aria-label="What is inside the public archive">
+      <h2>What is actually published</h2>
+      <p>The public archive includes the viewer, structured archive data, a privacy summary, checksums, and public media files. It does not include private source text, private media files, private storage paths, or signed URLs that were removed by the redaction policy.</p>
+    </section>
+
+    <div class="actions" aria-label="Open demo archives">
+      <a class="button" href="community-memory/index.html">Open community memory archive</a>
+      <a class="button secondary" href="redacted-family/index.html">Open redacted family archive</a>
+    </div>
+
+    <footer>
+      Open Memory Archive demo. No external network required. No telemetry.
+    </footer>
+  </main>
+</body>
+</html>
