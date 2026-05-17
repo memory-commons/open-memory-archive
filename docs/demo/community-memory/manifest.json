@@ -2,7 +2,7 @@
   "format": "open-memory-archive-v1",
   "formatVersion": 1,
   "builderVersion": "0.1.0",
-  "generatedAt": "2026-05-11T17:58:50.066Z",
+  "generatedAt": "2026-05-17T19:54:29.793Z",
   "publication": {
     "id": "community-memory-demo",
     "title": "Harbour Street Community Memories",
@@ -10,7 +10,7 @@
   },
   "privacy": {
     "profile": "public-demo",
-    "generatedAt": "2026-05-11T17:58:50.061Z",
+    "generatedAt": "2026-05-17T19:54:29.789Z",
     "generatedByTool": "open-memory-archive",
     "redactionPolicy": "default-public-demo-v1",
     "containsPersonalData": true,

@@ -1,2 +1,1 @@
-This synthetic private fixture should not be copied into public-demo output.
-
+Private family recording transcript about the boathouse sale discussion. This file should not be copied into the public export.

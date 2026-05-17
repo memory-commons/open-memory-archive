@@ -26,7 +26,7 @@
         {
           "id": "section-public",
           "title": "Public context",
-          "text": "This synthetic example shows how a public archive can include family-history context while redacting living-person-sensitive fields.",
+          "text": "Grandfather Matti kept a leather-bound notebook. Every evening after the boats came in he wrote down what he saw, who said what, and what the weather was doing. The notebook is now with Anna.",
           "privacy": {
             "privacyScope": "public",
             "consentStatus": "not_required",
@@ -36,8 +36,8 @@
         {
           "id": "section-private",
           "title": "Private detail",
-          "text": "This private note should not appear in a public demo export.",
-          "privateNote": "Synthetic private detail",
+          "text": "Anna's mother was estranged from the family between 1988 and 1995. Matti's notebook mentions it three times but Anna asked to keep those pages private.",
+          "privateNote": "Anna asked the family to keep this passage in the private archive.",
           "privacy": {
             "privacyScope": "family",
             "consentStatus": "unknown",
@@ -50,11 +50,12 @@
   "people": [
     {
       "id": "person-living",
-      "displayName": "Liisa Living Example",
+      "displayName": "Anna Korhonen",
       "birthDate": "1988-04-12",
-      "birthPlace": "Example Street 4, Helsinki",
-      "email": "liisa@example.invalid",
-      "biography": "Synthetic living-person data used to test redaction.",
+      "birthPlace": "Turku, Finland",
+      "email": "anna@example.invalid",
+      "description": "Anna Korhonen. Lives in Turku. Manages the family's archive and decides what is shared publicly.",
+      "biography": "Anna Korhonen. Lives in Turku. Manages the family's archive and decides what is shared publicly.",
       "privacy": {
         "privacyScope": "family",
         "consentStatus": "unknown",
@@ -65,8 +66,8 @@
     },
     {
       "id": "person-deceased",
-      "displayName": "Matti Example",
-      "description": "Synthetic deceased person in the public portion of the fixture.",
+      "displayName": "Matti Korhonen",
+      "description": "Matti Korhonen (1932-2019). Fisherman, amateur historian, and narrator of this archive.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -79,9 +80,9 @@
   "events": [
     {
       "id": "event-public",
-      "title": "A remembered summer meal",
-      "date": "1977",
-      "description": "A synthetic event safe for public demo export.",
+      "title": "Harbour Market Day",
+      "date": "1967",
+      "description": "Harbour Market Day, summer 1967. Matti's notebook records 52 boats and a queue around the block for smoked vendace.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -92,7 +93,7 @@
       "id": "event-withdrawn",
       "title": "Withdrawn private event",
       "date": "2024-01-20",
-      "description": "This should be redacted because consent is withdrawn.",
+      "description": "Family argument at the summer cottage, July 1991. Consent for this entry was withdrawn by Anna in 2024.",
       "privacy": {
         "privacyScope": "private",
         "consentStatus": "withdrawn",
@@ -129,7 +130,7 @@
       "id": "media-private",
       "title": "Private family recording",
       "sourcePath": "media/private-note.txt",
-      "signedUrl": "https://example.invalid/private?signature=synthetic",
+      "signedUrl": "https://example.invalid/private?signature=private-family-token",
       "mediaType": "text/plain",
       "privacy": {
         "privacyScope": "family",
@@ -148,4 +149,3 @@
     }
   ]
 }
-

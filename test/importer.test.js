@@ -16,7 +16,7 @@ test('importFolder converts community-memory folder into archive input', async (
   assert.equal(archiveInput.people.length, 2)
   assert.equal(archiveInput.events.length, 2)
   assert.equal(archiveInput.media.length, 2)
-  assert.match(archiveInput.chapters[0].sections[0].text, /ordinary Markdown/)
+  assert.match(archiveInput.chapters[0].sections[0].text, /Matti Korhonen/)
 })
 
 test('writeImportedArchiveInput output can be built into a redacted archive', async () => {

@@ -59,6 +59,29 @@
       color: LinkText;
     }
 
+    nav[aria-label="Demo navigation"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1rem;
+      padding: .6rem 2rem;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, CanvasText 4%, Canvas 96%);
+      font-size: .9rem;
+    }
+
+    nav[aria-label="Demo navigation"] a {
+      color: LinkText;
+      text-decoration: none;
+    }
+
+    nav[aria-label="Demo navigation"] a:hover {
+      text-decoration: underline;
+    }
+
+    nav[aria-label="Demo navigation"] strong {
+      color: CanvasText;
+    }
+
     .lede {
       max-width: 760px;
       color: var(--muted);
@@ -116,6 +139,14 @@
       width: 100%;
     }
 
+    .what-is-this {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 28px 0;
+      padding: 18px;
+      background: var(--soft);
+    }
+
     .note {
       border-left: 4px solid var(--accent-2);
       margin-top: 28px;
@@ -153,6 +184,12 @@
   </style>
 </head>
 <body>
+  <nav aria-label="Demo navigation">
+    <strong>Demo home</strong>
+    <a href="community-memory/index.html">Community archive</a>
+    <a href="redacted-family/index.html">Family archive</a>
+    <a href="privacy-redaction-demo.html">Privacy guide</a>
+  </nav>
   <main>
     <header>
       <h1>Open Memory Archive Live Demo</h1>
@@ -163,6 +200,12 @@
         <a class="button secondary" href="privacy-redaction-demo.html">Privacy guide</a>
       </div>
     </header>
+
+    <section class="what-is-this">
+      <h2>What is this?</h2>
+      <p>Open Memory Archive is a <strong>format and offline toolkit</strong> for producing portable memory archives. It is not a writing tool or a content management system; it is the export layer that a memoir platform, oral history app, or research database uses to produce self-contained archives.</p>
+      <p>The demos below show the <strong>output</strong>: what a user receives when they export from a platform that integrates Open Memory Archive.</p>
+    </section>
 
     <section class="grid" aria-label="Choose a demo page">
       <div class="panel">

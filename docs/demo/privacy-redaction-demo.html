@@ -66,6 +66,29 @@
       color: LinkText;
     }
 
+    nav[aria-label="Demo navigation"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1rem;
+      padding: .6rem 2rem;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, CanvasText 4%, Canvas 96%);
+      font-size: .9rem;
+    }
+
+    nav[aria-label="Demo navigation"] a {
+      color: LinkText;
+      text-decoration: none;
+    }
+
+    nav[aria-label="Demo navigation"] a:hover {
+      text-decoration: underline;
+    }
+
+    nav[aria-label="Demo navigation"] strong {
+      color: CanvasText;
+    }
+
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 0.94em;
@@ -79,6 +102,15 @@
 
     .callout {
       border-left: 4px solid var(--warn);
+      margin: 24px 0;
+      padding: 16px 18px;
+      background: var(--soft);
+    }
+
+    .context-note {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
       margin: 24px 0;
       padding: 16px 18px;
       background: var(--soft);
@@ -131,6 +163,32 @@
 
     tr:last-child td {
       border-bottom: 0;
+    }
+
+    .diff-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .diff-table th,
+    .diff-table td {
+      padding: .75rem 1rem;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      width: 50%;
+    }
+
+    .diff-table th {
+      background: color-mix(in srgb, CanvasText 8%, Canvas 92%);
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .diff-table .redacted-cell {
+      background: color-mix(in srgb, CanvasText 6%, Canvas 94%);
+      color: color-mix(in srgb, CanvasText 60%, transparent);
+      font-style: italic;
     }
 
     ul {
@@ -198,9 +256,13 @@
   </style>
 </head>
 <body>
+  <nav aria-label="Demo navigation">
+    <a href="index.html">Demo home</a>
+    <a href="community-memory/index.html">Community archive</a>
+    <a href="redacted-family/index.html">Family archive</a>
+    <strong>Privacy guide</strong>
+  </nav>
   <main>
-    <nav><a href="index.html">Live demo</a> / How privacy redaction works</nav>
-
     <header>
       <h1>How privacy labels become redactions</h1>
       <p class="lede">Open Memory Archive does not hide private material with a visual overlay. It reads privacy labels before export, writes a public archive with placeholders, and leaves private source text or private media out of that public archive.</p>
@@ -209,6 +271,8 @@
         <a class="button secondary" href="redacted-family/index.html">Open redacted family archive</a>
       </div>
     </header>
+
+    <p class="context-note"><strong>Context:</strong> The privacy annotations shown below are typically set by the upstream platform, not by the end user. The archive builder reads them and applies redaction automatically. End users see only the final result.</p>
 
     <section class="callout" aria-label="Current demo scope">
       <p><strong>This demo is not a rule-editing screen.</strong> The current public toolkit shows the archive format, builder, redaction layer, and offline viewer. Archive organisers mark privacy in source data such as CSV or JSON. A future application can expose the same fields as checkboxes or dropdowns.</p>
@@ -229,6 +293,39 @@
           <strong>3. Publish only the safe output</strong>
           <p>The public archive contains placeholders, public media, checksums, and a redaction log.</p>
         </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="difference-title">
+      <h2 id="difference-title">See the difference: source vs. exported text</h2>
+      <p>Below is actual text from the family archive example. The left column shows the source material; the right column shows what appears in the public export.</p>
+      <div class="table-wrap">
+        <table class="diff-table">
+          <thead>
+            <tr>
+              <th>Source (family-only)</th>
+              <th>Public export</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Anna Korhonen. Lives in Turku. Manages the family's archive and decides what is shared publicly.</td>
+              <td class="redacted-cell">[REDACTED] - living person, consent not confirmed</td>
+            </tr>
+            <tr>
+              <td>Family argument at the summer cottage, July 1991. Consent for this entry was withdrawn by Anna in 2024.</td>
+              <td class="redacted-cell">[REDACTED] - consent was withdrawn</td>
+            </tr>
+            <tr>
+              <td>Anna's mother was estranged from the family between 1988 and 1995. Matti's notebook mentions it three times but Anna asked to keep those pages private.</td>
+              <td class="redacted-cell">[REDACTED] - marked as private or family-only</td>
+            </tr>
+            <tr>
+              <td>Harbour Market Day, summer 1967. Matti's notebook records 52 boats and a queue around the block for smoked vendace.</td>
+              <td>Harbour Market Day, summer 1967. Matti's notebook records 52 boats and a queue around the block for smoked vendace.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -260,7 +357,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>person-anna</code> / Anna K.</td>
+              <td><code>person-anna</code> / Anna Korhonen</td>
               <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
               <td><code>Redacted person</code> placeholder</td>
             </tr>
@@ -275,12 +372,12 @@
               <td><code>Redacted media</code>; source file not copied</td>
             </tr>
             <tr>
-              <td><code>person-matti</code> / Matti Example</td>
+              <td><code>person-matti</code> / Matti Korhonen</td>
               <td><code>public</code>, <code>not_required</code>, <code>deceased</code>, <code>containsPersonalData: true</code></td>
               <td>Displayed in the public archive</td>
             </tr>
             <tr>
-              <td><code>media-note</code> / Harbour note</td>
+              <td><code>media-note</code> / Harbour market photograph</td>
               <td><code>public</code>, <code>not_required</code>, <code>not_applicable</code>, <code>containsPersonalData: false</code></td>
               <td>Copied into the archive media folder</td>
             </tr>
@@ -291,7 +388,7 @@
 
     <section aria-labelledby="family-title">
       <h2 id="family-title">Redacted family demo: consent and private media</h2>
-      <p>The second demo uses a more privacy-focused synthetic family archive. It shows withdrawn consent, family-only scope, private text, private media, and signed URL removal.</p>
+      <p>The second demo uses a more privacy-focused fictional family archive. It shows withdrawn consent, family-only scope, private text, private media, and signed URL removal.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -308,7 +405,7 @@
               <td><code>Redacted section</code>; private text removed</td>
             </tr>
             <tr>
-              <td><code>person-living</code> / Liisa Living Example</td>
+              <td><code>person-living</code> / Anna Korhonen</td>
               <td><code>family</code>, <code>unknown consent</code>, <code>living</code>, <code>containsPersonalData: true</code></td>
               <td><code>Redacted person</code> placeholder</td>
             </tr>

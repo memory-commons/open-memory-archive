@@ -26,7 +26,7 @@
         {
           "id": "section-public",
           "title": "Public context",
-          "text": "This synthetic example shows how a public archive can include family-history context while redacting living-person-sensitive fields.",
+          "text": "Grandfather Matti kept a leather-bound notebook. Every evening after the boats came in he wrote down what he saw, who said what, and what the weather was doing. The notebook is now with Anna.",
           "privacy": {
             "privacyScope": "public",
             "consentStatus": "not_required",
@@ -66,8 +66,8 @@
     },
     {
       "id": "person-deceased",
-      "displayName": "Matti Example",
-      "description": "Synthetic deceased person in the public portion of the fixture.",
+      "displayName": "Matti Korhonen",
+      "description": "Matti Korhonen (1932-2019). Fisherman, amateur historian, and narrator of this archive.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -80,9 +80,9 @@
   "events": [
     {
       "id": "event-public",
-      "title": "A remembered summer meal",
-      "date": "1977",
-      "description": "A synthetic event safe for public demo export.",
+      "title": "Harbour Market Day",
+      "date": "1967",
+      "description": "Harbour Market Day, summer 1967. Matti's notebook records 52 boats and a queue around the block for smoked vendace.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -155,34 +155,34 @@
       "path": "$.chapters[0].sections[1]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "appliedAt": "2026-05-17T19:54:29.779Z",
       "replacement": "placeholder"
     },
     {
       "path": "$.people[0]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "appliedAt": "2026-05-17T19:54:29.779Z",
       "replacement": "placeholder"
     },
     {
       "path": "$.events[1]",
       "reason": "withdrawn_consent",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "appliedAt": "2026-05-17T19:54:29.780Z",
       "replacement": "placeholder"
     },
     {
       "path": "$.media[1]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T18:01:41.355Z",
+      "appliedAt": "2026-05-17T19:54:29.780Z",
       "replacement": "placeholder"
     }
   ],
   "privacySummary": {
     "profile": "public-demo",
-    "generatedAt": "2026-05-11T18:01:41.355Z",
+    "generatedAt": "2026-05-17T19:54:29.780Z",
     "generatedByTool": "open-memory-archive",
     "redactionPolicy": "default-public-demo-v1",
     "containsPersonalData": true,

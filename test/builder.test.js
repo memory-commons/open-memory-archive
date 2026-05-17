@@ -39,7 +39,7 @@ test('builder creates an offline archive directory with privacy summary', async 
     assert.equal(manifest.privacy.telemetryEnabled, false)
     assert.ok(manifest.privacy.redactionCount > 0)
     assert.equal(archive.media.find((item) => item.id === 'media-private').localPath, undefined)
-    assert.doesNotMatch(JSON.stringify(archive), /signature=synthetic/)
+    assert.doesNotMatch(JSON.stringify(archive), /signature=/)
     assert.doesNotMatch(JSON.stringify(archive), /Private family recording/)
     assert.doesNotMatch(JSON.stringify(archive), /Private detail/)
     assert.match(html, /Redacted Family Archive Demo/)

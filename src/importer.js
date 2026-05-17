@@ -140,6 +140,7 @@ export async function importFolder(inputDir, options = {}) {
     locations: locationRows.map((row) => ({
       id: row.id,
       name: row.name,
+      description: row.description || '',
       region: row.region || '',
       country: row.country || '',
       privacy: privacyFromRow(row),
@@ -147,6 +148,7 @@ export async function importFolder(inputDir, options = {}) {
     media: mediaRows.map((row) => ({
       id: row.id,
       title: row.title || row.id,
+      description: row.description || '',
       sourcePath: row.file || row.sourcePath,
       mediaType: row.mediaType || null,
       privacy: privacyFromRow(row),

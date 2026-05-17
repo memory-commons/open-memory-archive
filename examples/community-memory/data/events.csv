@@ -1,3 +1,3 @@
 id,title,date,description,privacyScope,consentStatus,livingPersonStatus,containsPersonalData,containsSpecialCategoryData
-event-harbour-market,Harbour market mornings,1974,Synthetic public community memory event,public,not_required,not_applicable,false,false
-event-private-meeting,Private planning meeting,2025,Synthetic private event that should be redacted,family,unknown,living,true,false
+event-harbour-market,Harbour market mornings,1974,"Every Saturday from May to September, the harbour square fills with small boats selling fresh herring. Matti estimated 40-50 vendors in the 1960s.",public,not_required,not_applicable,false,false
+event-private-meeting,Boathouse sale discussion,2025,"Family discussion about selling the boathouse - details withheld at Anna's request.",family,unknown,living,true,false

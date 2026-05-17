@@ -28,7 +28,7 @@
         {
           "id": "harbour-body",
           "title": "Harbour Days",
-          "text": "On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. This synthetic chapter is written as ordinary Markdown so a local history group can prepare an archive without using a dedicated platform.\n\nThe archive builder keeps the text readable, records privacy metadata, and packages the material into an offline folder.",
+          "text": "On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. Matti Korhonen remembered the smell of tarred rope, smoked vendace, and wet wool coats drying beside the coffee stall.\n\nBy the mid-1960s the market had become the village noticeboard. Fishing crews posted repair jobs on the warehouse door, children carried baskets between boats, and the library van stopped beside the customs shed so older residents could return books without walking uphill.",
           "privacy": {
             "privacyScope": "public",
             "consentStatus": "not_required",
@@ -53,7 +53,7 @@
         {
           "id": "school-body",
           "title": "The Old School",
-          "text": "The old school building became a meeting place after classes ended. People used the hall for choir rehearsals, history evenings, and winter gatherings.\n\nThis example does not contain real people or real private records.",
+          "text": "The old school building became a meeting place after classes ended. People used the hall for choir rehearsals, history evenings, and winter gatherings.\n\nIn winter, the caretaker lit the tiled stove before dawn. Matti wrote that the windows stayed frosted until the first song began, and that the harbour families brought coffee in enamel pots wrapped with wool scarves.",
           "privacy": {
             "privacyScope": "public",
             "consentStatus": "not_required",
@@ -81,8 +81,8 @@
     },
     {
       "id": "person-matti",
-      "displayName": "Matti Example",
-      "description": "Synthetic deceased narrator for public demo",
+      "displayName": "Matti Korhonen",
+      "description": "Matti Korhonen (1932-2019). Fisherman and local historian. Recorded his harbour memories in notebooks between 1987 and 2004.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -98,7 +98,7 @@
       "id": "event-harbour-market",
       "title": "Harbour market mornings",
       "date": "1974",
-      "description": "Synthetic public community memory event",
+      "description": "Every Saturday from May to September, the harbour square fills with small boats selling fresh herring. Matti estimated 40-50 vendors in the 1960s.",
       "privacy": {
         "privacyScope": "public",
         "consentStatus": "not_required",
@@ -126,7 +126,8 @@
     {
       "id": "location-harbour",
       "name": "Harbour Street",
-      "region": "Example Region",
+      "description": "The old wooden harbour warehouse, built in 1923 and demolished in 2001, stood at the bend where fishermen repaired nets after the morning market.",
+      "region": "Southwest Finland",
       "country": "Finland",
       "privacy": {
         "privacyScope": "public",
@@ -140,7 +141,8 @@
     {
       "id": "location-school",
       "name": "Old School Hall",
-      "region": "Example Region",
+      "description": "The two-room village school later became the harbour neighbourhood meeting hall, with choir rehearsals on Thursdays and winter lectures beside the tiled stove.",
+      "region": "Southwest Finland",
       "country": "Finland",
       "privacy": {
         "privacyScope": "public",
@@ -155,7 +157,8 @@
   "media": [
     {
       "id": "media-note",
-      "title": "Harbour note",
+      "title": "Harbour market photograph",
+      "description": "Photograph of harbour market, c. 1965. Donated by Matti Korhonen's estate.",
       "mediaType": "text/plain",
       "privacy": {
         "privacyScope": "public",
@@ -196,27 +199,27 @@
       "path": "$.people[0]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "appliedAt": "2026-05-17T19:54:29.788Z",
       "replacement": "placeholder"
     },
     {
       "path": "$.events[1]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "appliedAt": "2026-05-17T19:54:29.789Z",
       "replacement": "placeholder"
     },
     {
       "path": "$.media[1]",
       "reason": "private_scope",
       "ruleId": "default-public-demo-v1",
-      "appliedAt": "2026-05-11T17:58:50.061Z",
+      "appliedAt": "2026-05-17T19:54:29.789Z",
       "replacement": "placeholder"
     }
   ],
   "privacySummary": {
     "profile": "public-demo",
-    "generatedAt": "2026-05-11T17:58:50.061Z",
+    "generatedAt": "2026-05-17T19:54:29.789Z",
     "generatedByTool": "open-memory-archive",
     "redactionPolicy": "default-public-demo-v1",
     "containsPersonalData": true,

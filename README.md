@@ -162,6 +162,50 @@ structured memory data + local media
   -> no-network viewer
 ```
 
+### How it fits together
+
+Open Memory Archive is **not** a content management system. It does not extract entities from text, manage consent forms, or provide a user interface for writing memoirs. It is the **export and preservation layer** that sits downstream of those tools.
+
+```text
++---------------------------------+
+| Upstream platform               |
+| (memoir app, oral history       |
+|  tool, research database)       |
+|                                 |
+| * entity extraction             |
+| * consent management            |
+| * privacy annotation            |
++----------------+----------------+
+                 |
+                 | structured JSON or CSV+Markdown
+                 v
++---------------------------------+
+| Open Memory Archive             |
+|                                 |
+| * schema validation             |
+| * deterministic redaction       |
+| * checksum generation           |
+| * static offline viewer         |
++----------------+----------------+
+                 |
+                 | self-contained archive folder
+                 v
++---------------------------------+
+| Output: portable archive        |
+|                                 |
+| * opens in any browser          |
+| * no server, no account         |
+| * machine-readable manifest     |
+| * survives platform shutdown    |
++---------------------------------+
+```
+
+**If you are a platform developer**, integrate the builder as your export layer. Your users never touch JSON directly.
+
+**If you are a researcher or archivist** without a platform, prepare input files following the schema. See the `community-memory` example for the CSV and Markdown approach.
+
+**Privacy annotations** are applied at the entity level: each person, event, location, section, or media item carries a `privacy` object. The builder reads these fields and applies redaction policy. Annotations are typically set by the upstream platform based on user choices, such as "mark this person as private", not typed in by hand.
+
 ### Who uses it
 
 - **A local history group** collects interview notes, old photographs, and event records into a portable archive it can pass to a public library.

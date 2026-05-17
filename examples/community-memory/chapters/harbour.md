@@ -1,5 +1,5 @@
 # Harbour Days
 
-On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. This synthetic chapter is written as ordinary Markdown so a local history group can prepare an archive without using a dedicated platform.
+On Saturday mornings the harbour square filled with small boats, coffee sellers, and neighbours trading news. Matti Korhonen remembered the smell of tarred rope, smoked vendace, and wet wool coats drying beside the coffee stall.
 
-The archive builder keeps the text readable, records privacy metadata, and packages the material into an offline folder.
+By the mid-1960s the market had become the village noticeboard. Fishing crews posted repair jobs on the warehouse door, children carried baskets between boats, and the library van stopped beside the customs shed so older residents could return books without walking uphill.
