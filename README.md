@@ -7,7 +7,7 @@
 [![No telemetry](https://img.shields.io/badge/telemetry-none-brightgreen.svg)](#)
 [![Works offline](https://img.shields.io/badge/works-offline-blue.svg)](#)
 
-**[→ Live demo (no download needed)](https://memory-commons.github.io/open-memory-archive/demo/)**
+**[→ Live demo (no download needed)](https://memory-commons.org/demo/)**
 
 Open Memory Archive is an offline-first archive format, builder, validator, and static viewer for personal and community memory projects.
 
@@ -75,16 +75,14 @@ Open:
 dist/redacted-family/index.html
 ```
 
-What to check:
+**What you should see:**
 
-- the archive opens without a server
-- `manifest.json` says `externalNetworkRequired: false`
-- `manifest.json` says `telemetryEnabled: false`
-- the private fixture media file is not copied into the archive
-- living-person and withdrawn-consent fixture details are replaced by redacted placeholders
-- `data/checksums.sha256` lists the generated files
-- `verify-checksums` reports that generated files match the checksum manifest
-- `inspect-privacy` prints the privacy summary and redaction list
+- The page opens in your browser from a local file — no server, no login, no internet
+- The header banner shows 🔒 No external network, 📵 No telemetry, and ✂️ N items redacted
+- The "Redacted person" and "Redacted item" entries have a grey background, a [REDACTED] label, and the reason for redaction (e.g. "marked as private or family-only")
+- The "About privacy redaction" section at the bottom explains what was removed and links to the full privacy guide
+- `manifest.json` (collapsed by default) confirms `"externalNetworkRequired": false` and `"telemetryEnabled": false`
+- Running `verify-checksums` reports that all generated files match — nothing was tampered with
 
 ## File-based Archives
 
